@@ -8,20 +8,47 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 public class Player {
+
+  BufferedImage image;
+  Point position;
+
+  public Player() {
+    loadGraphics();
+    position = new Point(145,110);
+  }
+
+  public void loadGraphics() {
+    try {
+      image = ImageIO.read(new File("image.png"));
+    }
+    catch (IOException exc) {
+      System.out.println("no open");
+    }
+  }
+
+  public void show(Graphics g, ImageObserver observer) {
+    g.drawImage(image, position.x, position.y, observer);
+  }
+
+
   public void keyPressed(KeyEvent e) {
     int key = e.getKeyCode();
 
+    //W
     if (key == 87) {
-      System.out.println("W");
+      position.translate(0, -10);
     }
+    //A
     if (key == 65) {
-      System.out.println("A");
+      position.translate(-10, 0);
     }
+    //S
     if (key == 83) {
-      System.out.println("S");
+      position.translate(0, 10);
     }
+    //D
     if (key == 68) {
-      System.out.println("D");
+      position.translate(10, 0);
     }
 
   }
