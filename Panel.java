@@ -20,13 +20,19 @@ public class Panel extends JPanel implements ActionListener, KeyListener{
   }
 
   public void actionPerformed(ActionEvent e) {
-    if (player.position.y >= 400) {
+    if (player.position.y >= 515) {
       map.position.translate(0,-2);
     }
 
-    if (player.position.y == 0) {
+    if (player.position.y <= 0) {
       map.position.translate(0,2);
     }
+
+    if (player.position.x >= 320) {
+      //
+    }
+
+
     repaint();
   }
 

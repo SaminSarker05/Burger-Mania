@@ -5,7 +5,7 @@ public class Game {
   public static void main(String[] args) {
 
     JFrame frame = new JFrame("Title...");
-    frame.setSize(500,500);
+    frame.setSize(380,600);
 
     Panel panel = new Panel();
     frame.add(panel);

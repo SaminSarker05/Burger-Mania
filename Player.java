@@ -14,7 +14,7 @@ public class Player {
 
   public Player() {
     loadGraphics();
-    position = new Point(217,110);
+    position = new Point(153,110);
   }
 
   public void loadGraphics() {
