@@ -14,12 +14,12 @@ public class Player {
 
   public Player() {
     loadGraphics();
-    position = new Point(145,110);
+    position = new Point(217,110);
   }
 
   public void loadGraphics() {
     try {
-      image = ImageIO.read(new File("image.png"));
+      image = ImageIO.read(new File("images/player.png"));
     }
     catch (IOException exc) {
       System.out.println("no open");

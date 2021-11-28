@@ -5,15 +5,13 @@ import javax.swing.*;
 public class Panel extends JPanel implements ActionListener, KeyListener{
 
   private static final long serialVersionUID = 490905409104883233L;
-  public static final int TILE_SIZE = 50;
-  public static final int ROWS = 12;
-  public static final int COLUMNS = 18;
-  public static final int NUM_COINS = 5;
 
   Player player;
+  Map map;
 
   public Panel() {
     setBackground(new Color(100,100,100));
+    map = new Map();
     player = new Player();
 
     Timer timer = new Timer(25,this);
@@ -22,14 +20,19 @@ public class Panel extends JPanel implements ActionListener, KeyListener{
   }
 
   public void actionPerformed(ActionEvent e) {
-    if (player.position.equals(new Point(0,0))) {
-      //
+    if (player.position.y >= 400) {
+      map.position.translate(0,-2);
+    }
+
+    if (player.position.y == 0) {
+      map.position.translate(0,2);
     }
     repaint();
   }
 
   public void paintComponent(Graphics g) {
     super.paintComponent(g);
+    map.show(g,this);
     player.show(g, this);
   }
 
