@@ -7,7 +7,6 @@ public class Game {
 
   public static void main(String[] args) {
 
-
     JFrame frame = new JFrame("Title...");
     frame.setSize(WIDTH,HEIGHT);
 

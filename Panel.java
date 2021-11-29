@@ -10,11 +10,17 @@ public class Panel extends JPanel implements ActionListener, KeyListener{
   Map map;
   int score = 0;
   Point pointloc = new Point(123,110);
+  Alien alien1, alien2, alien3, alien4;
 
   public Panel() {
     setBackground(new Color(100,100,100));
     map = new Map();
     player = new Player();
+    alien1 = new Alien(50,50);
+    alien2 = new Alien(70,90);
+    alien3 = new Alien(100,150);
+    alien4 = new Alien(200,10);
+
 
     Timer timer = new Timer(25,this);
     timer.start();
@@ -30,7 +36,12 @@ public class Panel extends JPanel implements ActionListener, KeyListener{
   public void paintComponent(Graphics g) {
     super.paintComponent(g);
     map.show(g,this);
-    player.show(g, this);
+    alien1.show(g,this);
+    alien2.show(g,this);
+    alien3.show(g,this);
+    alien4.show(g,this);
+    player.show(g,this);
+
     drawScore(g);
   }
 
@@ -53,8 +64,8 @@ public class Panel extends JPanel implements ActionListener, KeyListener{
     graphics.setRenderingHint(
         RenderingHints.KEY_FRACTIONALMETRICS,
         RenderingHints.VALUE_FRACTIONALMETRICS_ON);
-    graphics.setColor(new Color(30, 201, 139));
-    graphics.setFont(new Font("Mono", Font.PLAIN, 20));
+    graphics.setColor(new Color(234, 182, 118));
+    graphics.setFont(new Font("PT Mono", Font.PLAIN, 18));
     FontMetrics metrics = graphics.getFontMetrics(graphics.getFont());
     Rectangle rect = new Rectangle(0,0,0,0);
 
