@@ -1,3 +1,8 @@
+// make alien placement random
+// make func to determine if player close to alien
+// music
+// win page
+
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -9,17 +14,16 @@ public class Panel extends JPanel implements ActionListener, KeyListener{
   Player player;
   Map map;
   int score = 0;
-  Point pointloc = new Point(123,110);
   Alien alien1, alien2, alien3, alien4;
 
   public Panel() {
     setBackground(new Color(100,100,100));
     map = new Map();
     player = new Player();
-    alien1 = new Alien(50,50);
-    alien2 = new Alien(70,90);
-    alien3 = new Alien(100,150);
-    alien4 = new Alien(200,10);
+    alien1 = new Alien(130,140);
+    alien2 = new Alien(300,400);
+    alien3 = new Alien(70,600);
+    alien4 = new Alien(200,500);
 
 
     Timer timer = new Timer(25,this);
@@ -46,9 +50,9 @@ public class Panel extends JPanel implements ActionListener, KeyListener{
   }
 
   public void displayScore() {
-    if (player.position.equals(pointloc)) {
+    if (player.position.equals(alien1.position)) {
       score++;
-      pointloc.setLocation(0,0);
+      alien1.position.setLocation(-100,-100);
     }
   }
 
