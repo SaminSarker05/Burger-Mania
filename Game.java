@@ -2,10 +2,14 @@ import javax.swing.*;
 
 public class Game {
 
+  static int HEIGHT = 700;
+  static int WIDTH = 350;
+
   public static void main(String[] args) {
 
+
     JFrame frame = new JFrame("Title...");
-    frame.setSize(380,600);
+    frame.setSize(WIDTH,HEIGHT);
 
     Panel panel = new Panel();
     frame.add(panel);

@@ -14,7 +14,7 @@ public class Player {
 
   public Player() {
     loadGraphics();
-    position = new Point(153,110);
+    position = new Point(140,90);
   }
 
   public void loadGraphics() {
@@ -37,19 +37,22 @@ public class Player {
     //W
     if (key == 87) {
       position.translate(0, -10);
+      System.out.println(position.y);
     }
     //A
     if (key == 65) {
       position.translate(-10, 0);
+      System.out.println(position.x);
     }
     //S
     if (key == 83) {
       position.translate(0, 10);
+      System.out.println(position.y);
     }
     //D
     if (key == 68) {
       position.translate(10, 0);
+      System.out.println(position.x);
     }
-
   }
 }
