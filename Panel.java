@@ -1,4 +1,3 @@
-// make alien placement random
 // make func to determine if player close to alien
 // music
 // win page
@@ -20,15 +19,13 @@ public class Panel extends JPanel implements ActionListener, KeyListener{
     setBackground(new Color(100,100,100));
     map = new Map();
     player = new Player();
-    alien1 = new Alien(130,140);
-    alien2 = new Alien(300,400);
-    alien3 = new Alien(70,600);
-    alien4 = new Alien(200,500);
-
+    alien1 = new Alien(200,200);
+    alien2 = new Alien( (int) (Math.random() * 300 + 1),  (int) (Math.random() * 600 + 1));
+    alien3 = new Alien( (int) (Math.random() * 300 + 1),  (int) (Math.random() * 600 + 1));
+    alien4 = new Alien( (int) (Math.random() * 300 + 1),  (int) (Math.random() * 600 + 1));
 
     Timer timer = new Timer(25,this);
     timer.start();
-
   }
 
   public void actionPerformed(ActionEvent e) {
@@ -49,8 +46,39 @@ public class Panel extends JPanel implements ActionListener, KeyListener{
     drawScore(g);
   }
 
+
+
+  public static boolean closeEnough(double a, double b) {
+   // base case:
+   if (a== 0.0 && b == 0.0) {
+     return true;
+   }
+
+   double percent = (a-b)/a * 100;
+
+   if (Math.abs(percent) <= 10 ) {
+     return true;
+   }
+   return false;
+ }
+
   public void displayScore() {
-    if (player.position.equals(alien1.position)) {
+    if (closeEnough(player.position.getX(), alien1.position.getX()) && closeEnough(player.position.getY(), alien1.position.getY())) {
+      score++;
+      alien1.position.setLocation(-100,-100);
+    }
+
+    if (closeEnough(player.position.getX(), alien2.position.getX()) && closeEnough(player.position.getY(), alien1.position.getY())) {
+      score++;
+      alien1.position.setLocation(-100,-100);
+    }
+
+    if (closeEnough(player.position.getX(), alien3.position.getX()) && closeEnough(player.position.getY(), alien1.position.getY())) {
+      score++;
+      alien1.position.setLocation(-100,-100);
+    }
+
+    if (closeEnough(player.position.getX(), alien4.position.getX()) && closeEnough(player.position.getY(), alien1.position.getY())) {
       score++;
       alien1.position.setLocation(-100,-100);
     }
