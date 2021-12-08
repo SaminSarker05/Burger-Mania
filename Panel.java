@@ -1,13 +1,9 @@
-// music
-
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-public class Panel extends JPanel implements ActionListener, KeyListener{
-
-  private static final long serialVersionUID = 490905409104883233L;
-
+public class Panel extends JPanel implements ActionListener, KeyListener {
+  //declaration of objects
   Player player;
   Map map;
   int score = 0;
@@ -17,39 +13,42 @@ public class Panel extends JPanel implements ActionListener, KeyListener{
   int[] a2 = new int[2];
   int[] a3 = new int[2];
   int[] a4 = new int[2];
-
+  //2d arrays will store x and y value of aliens
 
   public Panel() {
-    setBackground(new Color(100,100,100));
+    setBackground(new Color(100,100,100)); //default color if background can't be loaded
     map = new Map();
     player = new Player();
-    alien1 = new Alien(200,200);
+
+    //aliens given random x and y coordinate within frame length and width
+    alien1 = new Alien( (int) (Math.random() * 200 + 1),  (int) (Math.random() * 520 + 1));
 
     a1[0] = alien1.position.x;
     a1[1] = alien1.position.y;
 
-    alien2 = new Alien( (int) (Math.random() * 230 + 1),  (int) (Math.random() * 540 + 1));
+    alien2 = new Alien( (int) (Math.random() * 200 + 1),  (int) (Math.random() * 520 + 1));
 
     a2[0] = alien2.position.x;
     a2[1] = alien2.position.y;
 
-    alien3 = new Alien( (int) (Math.random() * 230 + 1),  (int) (Math.random() * 540 + 1));
+    alien3 = new Alien( (int) (Math.random() * 200 + 1),  (int) (Math.random() * 520 + 1));
 
     a3[0] = alien3.position.x;
     a3[1] = alien3.position.y;
 
-    alien4 = new Alien( (int) (Math.random() * 230 + 1),  (int) (Math.random() * 540 + 1));
+    alien4 = new Alien( (int) (Math.random() * 200 + 1),  (int) (Math.random() * 520 + 1));
 
     a4[0] = alien4.position.x;
     a4[1] = alien4.position.y;
 
     Timer timer = new Timer(25,this);
     timer.start();
+    //every 24ms actionPerformed called
   }
 
   public void actionPerformed(ActionEvent e) {
-    checkBorders();
-    displayScore();
+    checkBorders(); //checks if player out of frame
+    displayScore(); //displays score
     repaint();
   }
 
@@ -65,16 +64,13 @@ public class Panel extends JPanel implements ActionListener, KeyListener{
     drawScore(g);
   }
 
-
-
+  //checks if coordinates are close
   public static boolean closeEnough(double a, double b) {
 
    if (a == 0.0 && b == 0.0) {
      return true;
    }
-
    double percent = (a-b)/a * 100;
-
    if (Math.abs(percent) <= 16 ) {
      return true;
    }
@@ -114,10 +110,11 @@ public class Panel extends JPanel implements ActionListener, KeyListener{
       System.out.println("you win!!");
       score = 0;
       Game.cardLayout.show(Game.main, "end");
+      //if player eats all aliens then game ends and another panel opened
     }
-
   }
 
+  //draws
   public void drawScore(Graphics g) {
     String text = "Score: " + score;
     Graphics2D graphics = (Graphics2D) g;
@@ -166,5 +163,4 @@ public class Panel extends JPanel implements ActionListener, KeyListener{
   public void keyReleased(KeyEvent e) {
     //
   }
-
 }

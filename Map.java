@@ -8,7 +8,7 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 public class Map {
-
+  //background image
   BufferedImage image;
   Point position;
 
@@ -25,7 +25,7 @@ public class Map {
       System.out.println("no open");
     }
   }
-
+  //map does not move
   public void show(Graphics g, ImageObserver observer) {
     g.drawImage(image, position.x, position.y, observer);
   }

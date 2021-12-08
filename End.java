@@ -1,31 +1,22 @@
-// make func to determine if player close to alien
-// music
-// win page
-
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
 public class End extends JPanel implements ActionListener{
 
-  private static final long serialVersionUID = 490905409104883233L;
-
   Player player;
   Map map;
 
-
   public End() {
-    setBackground(new Color(100,100,100));
+    setBackground(new Color(100,100,100)); //default color
     map = new Map();
     player = new Player();
-
 
     Timer timer = new Timer(25,this);
     timer.start();
   }
 
   public void actionPerformed(ActionEvent e) {
-
     repaint();
   }
 
@@ -35,6 +26,7 @@ public class End extends JPanel implements ActionListener{
     draw(g);
   }
 
+  //panel draws message to frame
   public void draw(Graphics g) {
     String text = "You Win!!!";
     Graphics2D graphics = (Graphics2D) g;
@@ -54,6 +46,4 @@ public class End extends JPanel implements ActionListener{
 
     graphics.drawString(text,130,300);
   }
-
-
 }

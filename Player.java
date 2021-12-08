@@ -14,9 +14,10 @@ public class Player {
 
   public Player() {
     loadGraphics();
-    position = new Point(140,90);
+    position = new Point(140,90); //default player position
   }
 
+  //loads image
   public void loadGraphics() {
     try {
       image = ImageIO.read(new File("images/player.png"));
@@ -30,10 +31,9 @@ public class Player {
     g.drawImage(image, position.x, position.y, observer);
   }
 
-
+  //specfic key press moves player
   public void keyPressed(KeyEvent e) {
     int key = e.getKeyCode();
-
     //W
     if (key == 87) {
       position.translate(0, -10);

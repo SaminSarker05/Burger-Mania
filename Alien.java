@@ -12,11 +12,13 @@ public class Alien {
   BufferedImage image;
   Point position;
 
+  //alien has x and y position on board
   public Alien(int x, int y) {
     loadGraphics();
     position = new Point(x,y);
   }
 
+  //loads alien image
   public void loadGraphics() {
     try {
       image = ImageIO.read(new File("images/alien.png"));
