@@ -1,6 +1,4 @@
-// make func to determine if player close to alien
 // music
-// win page
 
 import java.awt.*;
 import java.awt.event.*;
@@ -15,14 +13,35 @@ public class Panel extends JPanel implements ActionListener, KeyListener{
   int score = 0;
   Alien alien1, alien2, alien3, alien4;
 
+  int[] a1 = new int[2];
+  int[] a2 = new int[2];
+  int[] a3 = new int[2];
+  int[] a4 = new int[2];
+
+
   public Panel() {
     setBackground(new Color(100,100,100));
     map = new Map();
     player = new Player();
     alien1 = new Alien(200,200);
-    alien2 = new Alien( (int) (Math.random() * 300 + 1),  (int) (Math.random() * 600 + 1));
-    alien3 = new Alien( (int) (Math.random() * 300 + 1),  (int) (Math.random() * 600 + 1));
-    alien4 = new Alien( (int) (Math.random() * 300 + 1),  (int) (Math.random() * 600 + 1));
+
+    a1[0] = alien1.position.x;
+    a1[1] = alien1.position.y;
+
+    alien2 = new Alien( (int) (Math.random() * 230 + 1),  (int) (Math.random() * 540 + 1));
+
+    a2[0] = alien2.position.x;
+    a2[1] = alien2.position.y;
+
+    alien3 = new Alien( (int) (Math.random() * 230 + 1),  (int) (Math.random() * 540 + 1));
+
+    a3[0] = alien3.position.x;
+    a3[1] = alien3.position.y;
+
+    alien4 = new Alien( (int) (Math.random() * 230 + 1),  (int) (Math.random() * 540 + 1));
+
+    a4[0] = alien4.position.x;
+    a4[1] = alien4.position.y;
 
     Timer timer = new Timer(25,this);
     timer.start();
@@ -49,39 +68,54 @@ public class Panel extends JPanel implements ActionListener, KeyListener{
 
 
   public static boolean closeEnough(double a, double b) {
-   // base case:
-   if (a== 0.0 && b == 0.0) {
+
+   if (a == 0.0 && b == 0.0) {
      return true;
    }
 
    double percent = (a-b)/a * 100;
 
-   if (Math.abs(percent) <= 10 ) {
+   if (Math.abs(percent) <= 16 ) {
      return true;
    }
    return false;
  }
 
   public void displayScore() {
-    if (closeEnough(player.position.getX(), alien1.position.getX()) && closeEnough(player.position.getY(), alien1.position.getY())) {
-      score++;
+    if (closeEnough(player.position.getX(), a1[0]) && closeEnough(player.position.getY(), a1[1])) {
+      a1[0] = -100;
+      a1[1] = -100;
       alien1.position.setLocation(-100,-100);
+      score++;
     }
 
-    if (closeEnough(player.position.getX(), alien2.position.getX()) && closeEnough(player.position.getY(), alien1.position.getY())) {
+    if (closeEnough(player.position.getX(), a2[0]) && closeEnough(player.position.getY(), a2[1])) {
+      a2[0] = -100;
+      a2[1] = -100;
+      alien2.position.setLocation(-100,-100);
       score++;
-      alien1.position.setLocation(-100,-100);
     }
 
-    if (closeEnough(player.position.getX(), alien3.position.getX()) && closeEnough(player.position.getY(), alien1.position.getY())) {
+    if (closeEnough(player.position.getX(), a3[0]) && closeEnough(player.position.getY(), a3[1])) {
+      a3[0] = -100;
+      a3[1] = -100;
+      alien3.position.setLocation(-100,-100);
       score++;
-      alien1.position.setLocation(-100,-100);
     }
 
-    if (closeEnough(player.position.getX(), alien4.position.getX()) && closeEnough(player.position.getY(), alien1.position.getY())) {
+    if (closeEnough(player.position.getX(), a4[0]) && closeEnough(player.position.getY(), a4[1])) {
+      a4[0] = -100;
+      a4[1] = -100;
+      alien4.position.setLocation(-100,-100);
       score++;
-      alien1.position.setLocation(-100,-100);
     }
+
+    if (score == 4) {
+      System.out.println("you win!!");
+      score = 0;
+      Game.cardLayout.show(Game.main, "end");
+    }
+
   }
 
   public void drawScore(Graphics g) {
@@ -97,7 +131,7 @@ public class Panel extends JPanel implements ActionListener, KeyListener{
         RenderingHints.KEY_FRACTIONALMETRICS,
         RenderingHints.VALUE_FRACTIONALMETRICS_ON);
     graphics.setColor(new Color(234, 182, 118));
-    graphics.setFont(new Font("PT Mono", Font.PLAIN, 18));
+    graphics.setFont(new Font("PT Mono", Font.PLAIN, 20));
     FontMetrics metrics = graphics.getFontMetrics(graphics.getFont());
     Rectangle rect = new Rectangle(0,0,0,0);
 

@@ -37,22 +37,18 @@ public class Player {
     //W
     if (key == 87) {
       position.translate(0, -10);
-      System.out.println(position.y);
     }
     //A
     if (key == 65) {
       position.translate(-10, 0);
-      System.out.println(position.x);
     }
     //S
     if (key == 83) {
       position.translate(0, 10);
-      System.out.println(position.y);
     }
     //D
     if (key == 68) {
       position.translate(10, 0);
-      System.out.println(position.x);
     }
   }
 }
